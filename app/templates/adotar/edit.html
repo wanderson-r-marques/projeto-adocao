@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h2 class="text-center">Editar cadastro para adoção</h2>
+{% endblock %}
+
+{% block content %}
+<form class="mt-5" action="/adotar/atualizar/{{ pessoa.0 }}/" method="post">
+{% csrf_token %}
+<!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="nome">Nome complete</label>
+    <input name="nome" type="text" value="{{ pessoa.1 }}" placeholder="Digite seu nome completo" required id="nome" class="form-control" />
+  </div>
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form3Example1">Sexo</label> 
+          <select class="form-control" required name="sexo" id="">
+            <option  value="">Selecione o sexo</option>
+            <option {% if pessoa.4 == 'Masculino' %} selected {% endif %} value="Masculino">Masculino</option>
+            <option {% if pessoa.4 == 'Feminino' %} selected {% endif %} value="Feminino">Feminino</option>            
+          </select>        
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="idade">Idade</label>
+        <input type="number" name="idade" value="{{ pessoa.2 }}" required placeholder="Digite sua idade" id="idade" class="form-control" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example4">Cor/Raça</label>
+    <select class="form-control" required name="cor" id="">
+        <option value="">Selecione a cor/raça</option>
+        <option {% if pessoa.3 == 'Negro' %} selected {% endif %} value="Negro">Negro</option>
+        <option {% if pessoa.3 == 'Branco' %} selected {% endif %} value="Branco">Branco</option>            
+        <option {% if pessoa.3 == 'Pardo' %} selected {% endif %} value="Pardo">Pardo</option>            
+    </select>
+  </div> 
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-warning btn-block mb-4">Editar</button>
+
+</form>
+{% endblock %}               

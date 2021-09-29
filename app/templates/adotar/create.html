@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h2 class="text-center">Cadastro para adoção</h2>
+{% endblock %}
+
+{% block content %}
+<form class="mt-5" action="/adotar/cadastrar" method="post">
+{% csrf_token %}
+<!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example3">Nome complete</label>
+    <input name="nome" type="text" placeholder="Digite seu nome completo" required id="form3Example3" class="form-control" />
+  </div>
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form3Example1">Sexo</label> 
+          <select class="form-control" required name="sexo" id="">
+            <option value="">Selecione o sexo</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>            
+          </select>        
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <label class="form-label" for="form3Example2">Idade</label>
+        <input type="number" name="idade" required placeholder="Digite sua idade" id="form3Example2" class="form-control" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example4">Cor/Raça</label>
+    <select class="form-control" required name="cor" id="">
+        <option value="">Selecione a cor/raça</option>
+        <option value="Negro">Negro</option>
+        <option value="Branco">Branco</option>            
+        <option value="Pardo">Pardo</option>            
+    </select>
+  </div> 
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-success btn-block mb-4">Cadastrar</button>
+
+</form>
+{% endblock %}               

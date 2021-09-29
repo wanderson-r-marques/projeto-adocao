@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h2 class="text-center">Lista para adoção</h2>
+{% endblock %}
+
+{% block content %}
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+    <a name="" id="" class="btn btn-success mb-4" href="/adotar/cadastro" role="button">Cadastrar</a>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Cor/Raça</th>                                
+                <th scope="col">Sexo</th>                                
+                <th scope="col">Ação</th>                                
+            </tr>
+        </thead>
+        <tbody>    
+            {% for id,nome,idade,cor,sexo in pessoas %}
+                <tr>                       
+                    <td>{{id}}</td>
+                    <td>{{nome}}</td>
+                    <td>{{idade}}</td>
+                    <td>{{cor}}</td>
+                    <td>{{sexo}}</td>                                    
+                    <td>
+                        <a class="btn btn-primary" href="detalhes/{{id}}/" role="button">Visualizar</a>
+                        <a class="btn btn-warning" href="editar/{{id}}/" role="button">Editar</a>
+                        <a onclick="return confirm('Tem certeza que deseja excluir?')" class="btn btn-danger" href="remover/{{id}}/" role="button">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}               
